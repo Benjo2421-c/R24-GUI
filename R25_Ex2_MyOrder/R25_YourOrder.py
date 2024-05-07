@@ -17,7 +17,7 @@ prix_total = 0
 
 #  VOIR ÉNONCÉ
 def ajouter_smarin():
-    pass
+    
 
 #  VOIR ÉNONCÉ               
 def ajouter_pizza():

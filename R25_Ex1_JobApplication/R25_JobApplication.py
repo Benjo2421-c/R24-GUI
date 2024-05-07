@@ -183,8 +183,8 @@ class App(ctk.CTk):
                         sticky="nsew")
 
         # Résumé de l'application
-        self.btn_resumer = ctk.CTkButton(master=frm_container,
-                                        text="Résumé de l'application")
+        self.btn_resumer = ctk.CTkButton(master=frm_container, 
+                                        text="Résumé de l'application", command=self.resumer)
         self.btn_resumer.grid(row=3, column=0,
                                         columnspan=2, padx=20,
                                         pady=2, sticky="ew")
@@ -200,12 +200,18 @@ class App(ctk.CTk):
 
     # Voir ÉNONCÉ
     def resumer(self):
-        pass
-
+        self.txt_resume.delete("0.0", "end")
+        resumer = self.creer_resume()
+        return self.txt_resume.insert(resumer)
     # Voir ÉNONCÉ
 
     def creer_resume(self):
-        pass
+        cpt = 0
+        for chk in self.list_checkbox:
+            if chk._check_state == True:
+                cpt +=1
+        return self.txt_resume.insert("0.0",f"salut {self.ent_nom.get()}\nMerci de votre application chez nous\nVous avez de l'expérience dans {cpt} point(s) sur {len(self.list_checkbox)} possibles.\nL'intérêt principal mentionné étant: {self.cbo_interet.get()}\nNous vous donnerons une réponse sous peu.")
+ 
 
 if __name__ == "__main__":
     app = App()
